@@ -36,25 +36,6 @@ def sb_fn(actual_value):
 def covert(write_add, write_data):
     pass
 '''
-
-class readDriver(BusDriver):
-    _signals = ["read_rdy", "read_en", "read_data", "read_address"]
-
-    def __init__(self, dut, name, clk):
-        BusDriver.__init__(self, dut, name, clk)
-        self.bus.read_en.value = 0
-        self.clk = clk
-
-    async def _driver_send(self, value, sync=True):
-        if self.bus.read_rdy.value != 1:
-            await RisingEdge(self.bus.read_rdy)
-        self.bus.read_en.value = value.en
-        self.bus.read_address.value = value.address
-        await ReadOnly()
-        await RisingEdge(self.clk)
-        await NextTimeStep()
-        #self.bus.write_en = 0
-
 class writeDriver(BusDriver):
     _signals = ["write_rdy", "write_en", "write_data", "write_address"]
 
@@ -126,8 +107,6 @@ async def dut_test(dut):
     await Timer(500, 'ns')
 
     odriver.append(rvalue)
-    #while len(expected_value) > 0:
-        #await Timer(2, 'ns')
 
 '''
     coverage_db.report_coverage(cocotb.log.info, bins=True)
