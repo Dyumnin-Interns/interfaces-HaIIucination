@@ -19,7 +19,7 @@ class readValue:
 
 def sb_fn(actual_value):
     global expected_value
-    e = expected_value.pop(0)
+    e = expected_value.pop()
     print("expected = ", e, "\n actual = ", actual_value)
     assert actual_value == e, f"Sb Matching FAILED"
 
@@ -114,10 +114,11 @@ async def dut_test(dut):
 
 
     for i in range(20):
-        data = randint(0, 1)
-        expected_value.append(data)
-        avalue = writeValue(address=4, data=data)
-        bvalue = writeValue(address=5, data=data)
+        adata = randint(0, 1)
+        bdata = randint(0, 1)
+        expected_value.append(adata or bdata)
+        avalue = writeValue(address=4, data=adata)
+        bvalue = writeValue(address=5, data=bdata)
 
         adriver.append(avalue)
         bdriver.append(bvalue)
@@ -125,8 +126,8 @@ async def dut_test(dut):
     await Timer(500, 'ns')
 
     odriver.append(rvalue)
-    while len(expected_value) > 0:
-        await Timer(2, 'ns')
+    #while len(expected_value) > 0:
+        #await Timer(2, 'ns')
 
 '''
     coverage_db.report_coverage(cocotb.log.info, bins=True)
