@@ -78,8 +78,8 @@ class writeDriver(BusDriver):
         self.bus.write_en.value = 0
 
     async def _driver_send(self, value, sync=True):
-        for _ in range(randint(0, 20)):
-            await RisingEdge(self.clk)
+        #for _ in range(randint(0, 20)):
+            #await RisingEdge(self.clk)
         if self.bus.write_rdy.value != 1:
             await RisingEdge(self.bus.write_rdy)
         self.bus.write_en.value = 1
