@@ -1,0 +1,24 @@
+<top abs_name="top" size="12" coverage="12" cover_percentage="100.0">
+  <add size="2" coverage="2" cover_percentage="100.0" abs_name="top.add" weight="1" at_least="1">
+    <bin0 bin="4" hits="108" abs_name="top.add.bin0" />
+    <bin1 bin="5" hits="92" abs_name="top.add.bin1" />
+  </add>
+  <data size="2" coverage="2" cover_percentage="100.0" abs_name="top.data" weight="1" at_least="1">
+    <bin0 bin="0" hits="105" abs_name="top.data.bin0" />
+    <bin1 bin="1" hits="95" abs_name="top.data.bin1" />
+  </data>
+  <cross size="4" coverage="4" cover_percentage="100.0" abs_name="top.cross">
+    <ab size="4" coverage="4" cover_percentage="100.0" abs_name="top.cross.ab" weight="1" at_least="1">
+      <bin0 bin="(4, 0)" hits="53" abs_name="top.cross.ab.bin0" />
+      <bin1 bin="(4, 1)" hits="55" abs_name="top.cross.ab.bin1" />
+      <bin2 bin="(5, 0)" hits="52" abs_name="top.cross.ab.bin2" />
+      <bin3 bin="(5, 1)" hits="40" abs_name="top.cross.ab.bin3" />
+    </ab>
+  </cross>
+  <read_address size="4" coverage="4" cover_percentage="100.0" abs_name="top.read_address" weight="1" at_least="1">
+    <bin0 bin="0" hits="50" abs_name="top.read_address.bin0" />
+    <bin1 bin="1" hits="56" abs_name="top.read_address.bin1" />
+    <bin2 bin="2" hits="49" abs_name="top.read_address.bin2" />
+    <bin3 bin="3" hits="45" abs_name="top.read_address.bin3" />
+  </read_address>
+</top>

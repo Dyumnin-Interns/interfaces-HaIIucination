@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1748072373" />
+    <testcase name="dut_test" classname="dut_test" file="/home/karthik/Projects/dyum_intern/interfaces-HaIIucination/tests/dut_test.py" lineno="98" time="0.019524097442626953" sim_time_ns="1045.001" ratio_time="53523.65214683111" />
+  </testsuite>
+</testsuites>
