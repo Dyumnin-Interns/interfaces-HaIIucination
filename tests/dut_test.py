@@ -23,19 +23,19 @@ def sb_fn(actual_value):
     print("expected = ", e, "\n actual = ", actual_value)
     assert actual_value == e, f"Sb Matching FAILED"
 
-'''
-@CoverPoint("top.write_data",
+@CoverPoint("top.a",
             xf = lambda x, y: x,
             bins = [0, 1]
             )
-@CoverPoint("top.write_address",
+@CoverPoint("top.b",
             xf = lambda x, y: x,
-            bins = list(range(0,8))
+            bins = [0, 1]
             )
+@CoverCross("top.cross.ab", items = ["top.a", "top.b"])
 
 def covert(write_add, write_data):
     pass
-'''
+
 class writeDriver(BusDriver):
     _signals = ["write_rdy", "write_en", "write_data", "write_address"]
 
@@ -47,13 +47,13 @@ class writeDriver(BusDriver):
     async def _driver_send(self, value, sync=True):
         if self.bus.write_rdy.value != 1:
             await RisingEdge(self.bus.write_rdy)
-        self.bus.write_en.value = value.en
-        self.bus.write_data.value = value.data
+        self.bus.write_en = 1
         self.bus.write_address.value = value.address
+        self.bus.write_data.value = value.data
         await ReadOnly()
         await RisingEdge(self.clk)
         await NextTimeStep()
-        #self.bus.write_en = 0
+        self.bus.write_en = 0
 
 class outputDriver(BusDriver):
     _signals = ["read_rdy", "read_en", "read_data", "read_address"]
@@ -63,17 +63,18 @@ class outputDriver(BusDriver):
         self.callback = sb_callback
 
     async def _driver_send(self, value, sync=True):
-        self.bus.read_address.value = value.address
-        while True:
+        while 1:
             if self.bus.read_rdy.value != 1:
                 await RisingEdge(self.bus.read_rdy)
+
+            self.bus.read_address.value = value.address
             self.bus.read_en.value = 1
             await ReadOnly()
             self.callback(int(self.bus.read_data.value))
             await RisingEdge(self.clk)
             await NextTimeStep()
             self.bus.read_en.value = 0
-    
+
 
 
 @cocotb.test
@@ -90,7 +91,10 @@ async def dut_test(dut):
     expected_value = []
     adriver = writeDriver(dut, "", dut.CLK)
     bdriver = writeDriver(dut, "", dut.CLK)
-    rvalue = readValue(address=0, en=1)
+    rvalue0 = readValue(address=0, en=1)
+    rvalue1 = readValue(address=1, en=1)
+    rvalue2 = readValue(address=2, en=1)
+    rvalue3 = readValue(address=3, en=1)
     odriver = outputDriver(dut, "", dut.CLK, sb_fn)
 
 
@@ -103,14 +107,16 @@ async def dut_test(dut):
 
         adriver.append(avalue)
         bdriver.append(bvalue)
+        covert(adata, bdata)
 
     await Timer(500, 'ns')
 
-    odriver.append(rvalue)
+    odriver.append(rvalue0)
+    odriver.append(rvalue1)
+    odriver.append(rvalue2)
+    odriver.append(rvalue3)
 
-'''
     coverage_db.report_coverage(cocotb.log.info, bins=True)
     coverage_file = os.path.join(
             os.getenv('RESULT_PATH', "./"), 'coverage.xml')
     coverage_db.export_to_xml(filename=coverage_file)
-'''
