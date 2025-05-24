@@ -1,24 +1,76 @@
-<top abs_name="top" size="12" coverage="12" cover_percentage="100.0">
+<top abs_name="top" size="42" coverage="30" cover_percentage="71.43">
   <add size="2" coverage="2" cover_percentage="100.0" abs_name="top.add" weight="1" at_least="1">
-    <bin0 bin="4" hits="108" abs_name="top.add.bin0" />
-    <bin1 bin="5" hits="92" abs_name="top.add.bin1" />
+    <bin0 bin="4" hits="100" abs_name="top.add.bin0" />
+    <bin1 bin="5" hits="100" abs_name="top.add.bin1" />
   </add>
   <data size="2" coverage="2" cover_percentage="100.0" abs_name="top.data" weight="1" at_least="1">
-    <bin0 bin="0" hits="105" abs_name="top.data.bin0" />
-    <bin1 bin="1" hits="95" abs_name="top.data.bin1" />
+    <bin0 bin="0" hits="103" abs_name="top.data.bin0" />
+    <bin1 bin="1" hits="97" abs_name="top.data.bin1" />
   </data>
-  <cross size="4" coverage="4" cover_percentage="100.0" abs_name="top.cross">
+  <cross size="22" coverage="12" cover_percentage="54.55" abs_name="top.cross">
     <ab size="4" coverage="4" cover_percentage="100.0" abs_name="top.cross.ab" weight="1" at_least="1">
-      <bin0 bin="(4, 0)" hits="53" abs_name="top.cross.ab.bin0" />
-      <bin1 bin="(4, 1)" hits="55" abs_name="top.cross.ab.bin1" />
-      <bin2 bin="(5, 0)" hits="52" abs_name="top.cross.ab.bin2" />
-      <bin3 bin="(5, 1)" hits="40" abs_name="top.cross.ab.bin3" />
+      <bin0 bin="(4, 0)" hits="49" abs_name="top.cross.ab.bin0" />
+      <bin1 bin="(4, 1)" hits="51" abs_name="top.cross.ab.bin1" />
+      <bin2 bin="(5, 0)" hits="54" abs_name="top.cross.ab.bin2" />
+      <bin3 bin="(5, 1)" hits="46" abs_name="top.cross.ab.bin3" />
     </ab>
+    <w_port size="9" coverage="4" cover_percentage="44.44" abs_name="top.cross.w_port">
+      <cross size="9" coverage="4" cover_percentage="44.44" abs_name="top.cross.w_port.cross" weight="1" at_least="1">
+        <bin0 bin="('Write_Idle', 'Write_Idle')" hits="0" abs_name="top.cross.w_port.cross.bin0" />
+        <bin1 bin="('Write_Idle', 'Write_RDY')" hits="1" abs_name="top.cross.w_port.cross.bin1" />
+        <bin2 bin="('Write_Idle', 'Write_Txn')" hits="0" abs_name="top.cross.w_port.cross.bin2" />
+        <bin3 bin="('Write_RDY', 'Write_Idle')" hits="0" abs_name="top.cross.w_port.cross.bin3" />
+        <bin4 bin="('Write_RDY', 'Write_RDY')" hits="86" abs_name="top.cross.w_port.cross.bin4" />
+        <bin5 bin="('Write_RDY', 'Write_Txn')" hits="9" abs_name="top.cross.w_port.cross.bin5" />
+        <bin6 bin="('Write_Txn', 'Write_Idle')" hits="0" abs_name="top.cross.w_port.cross.bin6" />
+        <bin7 bin="('Write_Txn', 'Write_RDY')" hits="9" abs_name="top.cross.w_port.cross.bin7" />
+        <bin8 bin="('Write_Txn', 'Write_Txn')" hits="0" abs_name="top.cross.w_port.cross.bin8" />
+      </cross>
+    </w_port>
+    <r_port size="9" coverage="4" cover_percentage="44.44" abs_name="top.cross.r_port">
+      <cross size="9" coverage="4" cover_percentage="44.44" abs_name="top.cross.r_port.cross" weight="1" at_least="1">
+        <bin0 bin="('Read_Idle', 'Read_Idle')" hits="0" abs_name="top.cross.r_port.cross.bin0" />
+        <bin1 bin="('Read_Idle', 'Read_RDY')" hits="1" abs_name="top.cross.r_port.cross.bin1" />
+        <bin2 bin="('Read_Idle', 'Read_Txn')" hits="0" abs_name="top.cross.r_port.cross.bin2" />
+        <bin3 bin="('Read_RDY', 'Read_Idle')" hits="0" abs_name="top.cross.r_port.cross.bin3" />
+        <bin4 bin="('Read_RDY', 'Read_RDY')" hits="4" abs_name="top.cross.r_port.cross.bin4" />
+        <bin5 bin="('Read_RDY', 'Read_Txn')" hits="1" abs_name="top.cross.r_port.cross.bin5" />
+        <bin6 bin="('Read_Txn', 'Read_Idle')" hits="0" abs_name="top.cross.r_port.cross.bin6" />
+        <bin7 bin="('Read_Txn', 'Read_RDY')" hits="0" abs_name="top.cross.r_port.cross.bin7" />
+        <bin8 bin="('Read_Txn', 'Read_Txn')" hits="99" abs_name="top.cross.r_port.cross.bin8" />
+      </cross>
+    </r_port>
   </cross>
   <read_address size="4" coverage="4" cover_percentage="100.0" abs_name="top.read_address" weight="1" at_least="1">
-    <bin0 bin="0" hits="50" abs_name="top.read_address.bin0" />
-    <bin1 bin="1" hits="56" abs_name="top.read_address.bin1" />
-    <bin2 bin="2" hits="49" abs_name="top.read_address.bin2" />
+    <bin0 bin="0" hits="53" abs_name="top.read_address.bin0" />
+    <bin1 bin="1" hits="51" abs_name="top.read_address.bin1" />
+    <bin2 bin="2" hits="51" abs_name="top.read_address.bin2" />
     <bin3 bin="3" hits="45" abs_name="top.read_address.bin3" />
   </read_address>
+  <port size="12" coverage="10" cover_percentage="83.33" abs_name="top.port">
+    <w size="6" coverage="5" cover_percentage="83.33" abs_name="top.port.w">
+      <current size="3" coverage="2" cover_percentage="66.67" abs_name="top.port.w.current" weight="1" at_least="1">
+        <bin0 bin="Write_Idle" hits="0" abs_name="top.port.w.current.bin0" />
+        <bin1 bin="Write_RDY" hits="96" abs_name="top.port.w.current.bin1" />
+        <bin2 bin="Write_Txn" hits="9" abs_name="top.port.w.current.bin2" />
+      </current>
+      <previous size="3" coverage="3" cover_percentage="100.0" abs_name="top.port.w.previous" weight="1" at_least="1">
+        <bin0 bin="Write_Idle" hits="1" abs_name="top.port.w.previous.bin0" />
+        <bin1 bin="Write_RDY" hits="95" abs_name="top.port.w.previous.bin1" />
+        <bin2 bin="Write_Txn" hits="9" abs_name="top.port.w.previous.bin2" />
+      </previous>
+    </w>
+    <r size="6" coverage="5" cover_percentage="83.33" abs_name="top.port.r">
+      <current size="3" coverage="2" cover_percentage="66.67" abs_name="top.port.r.current" weight="1" at_least="1">
+        <bin0 bin="Read_Idle" hits="0" abs_name="top.port.r.current.bin0" />
+        <bin1 bin="Read_RDY" hits="5" abs_name="top.port.r.current.bin1" />
+        <bin2 bin="Read_Txn" hits="100" abs_name="top.port.r.current.bin2" />
+      </current>
+      <previous size="3" coverage="3" cover_percentage="100.0" abs_name="top.port.r.previous" weight="1" at_least="1">
+        <bin0 bin="Read_Idle" hits="1" abs_name="top.port.r.previous.bin0" />
+        <bin1 bin="Read_RDY" hits="5" abs_name="top.port.r.previous.bin1" />
+        <bin2 bin="Read_Txn" hits="99" abs_name="top.port.r.previous.bin2" />
+      </previous>
+    </r>
+  </port>
 </top>

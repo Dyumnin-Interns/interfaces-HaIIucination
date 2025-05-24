@@ -65,7 +65,7 @@ module test (
   );
 
   initial begin
-    $dumpfile("interface.vcd");
+    $dumpfile("wave.vcd");
     $dumpvars;
     CLK = 0;
     forever begin
